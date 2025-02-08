@@ -9,3 +9,5 @@
 *.out
 *.synctex.gz
 *.toc
+*.bcf
+*.run.xml

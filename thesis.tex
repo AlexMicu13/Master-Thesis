@@ -1,6 +1,7 @@
 \documentclass[12pt,a4paper]{report}
 
 \usepackage[utf8]{inputenc} % pentru suport diacritice
+\usepackage{lmodern}
 % \usepackage[romanian]{babel} % setări pentru limba română
 \renewcommand\familydefault{\sfdefault} % sans serif
 
@@ -33,8 +34,8 @@
 \setlist{noitemsep}
 
 % packages used for citations
-\usepackage{apacite}
-\usepackage{natbib}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{sources.bib}
 
 \usepackage{xcolor}
 \usepackage{listings}
@@ -72,6 +73,7 @@ Departamentul Calculatoare\\}
 \begin{tabular}{ccc}
 \includegraphics[height=3cm]{pics/UNST Poli.png} & 
 \includegraphics[height=3cm]{pics/A&C.png} & 
+\includegraphics[height=3cm]{pics/sigla_cs.png}
 \end{tabular}
 
 \vspace{105pt}
@@ -112,7 +114,7 @@ Departamentul Calculatoare\\}
 
 \textbf{\large ABSTRACT}\par
 \AbstractEN \vfill
-\textbf{\large REZUMAT}\par
+\textbf{\large SINOPSIS}\par
 \AbstractRO\par\vfill
 \end{titlepage}
 }
@@ -139,20 +141,39 @@ Departamentul Calculatoare\\}
 %%   Câmpurile aferente rezumatului
 %%
 \newcommand{\AbstractEN}{
-The abstract should contain the following information (1/2 sentences per item):
-\begin{itemize}
-    \item Problem statement / context
-    \item Aim of the thesis/research objective(s)
-    \item Brief method details
-    \item Main results
-    \item Concluding remarks
-\end{itemize}
+Opportunistic communication in smart cities offers a cost-effective alternative\\
+to traditional cellular networks by leveraging existing infrastructure and\\
+placing edge entities. With the number of connected IoT devices projected to\\
+reach 40 billion by 2030, and 5G networks facing scalability challenges due to\\
+bandwidth limitations and deployment costs, this approach addresses critical\\
+gaps in urban digital transformation.
+\vspace{1\baselineskip} \\
+The placement of edge nodes can be influenced by various factors, including the\\
+number of users or data sources that need to be served, the types of applications\\
+being supported, and the available network infrastructure. Effective edge node\\
+placement can lead to significant improvements in the performance and efficiency\\
+of applications and services, making it a critical aspect of modern network\\
+design and management.
 }
 
-\newcommand{\AbstractRO}{Translation to be made at the end
+\newcommand{\AbstractRO}{
+Comunicarea oportunistă în orașele inteligente oferă o alternativă rentabilă la\\
+rețelele celulare tradiționale, prin utilizarea infrastructurii existente și\\
+plasarea entităților edge (la marginea rețelei). Cu un număr de dispozitive IoT\\
+conectate proiectat să ajungă la 40 de miliarde până în 2030, și cu rețelele 5G\\
+care se confruntă cu provocări de scalabilitate din cauza limitărilor de lățime\\
+de bandă și a costurilor de implementare, această abordare abordează lacune\\
+critice în transformarea digitală urbană.
+\vspace{1\baselineskip} \\
+Amplasarea nodurilor edge poate fi influențată de diverși factori,\\
+inclusiv numărul de utilizatori sau surse de date care trebuie deservite,\\
+tipurile de aplicații care sunt suportate și infrastructura de rețea disponibilă.\\
+Amplasarea eficientă a nodurilor de margine poate duce la îmbunătățiri semnificative\\
+în performanța și eficiența aplicațiilor și serviciilor, ceea ce o face un aspect\\
+critic al proiectării și gestionării rețelelor moderne.
 
 \vspace{3\baselineskip}
-\textbf{Keywords}: max 5, e.g., Language Models, Natural Language Processing
+\textbf{Keywords}: Edge Computing, Sustainable Costs, Reduced Latency
 }
 
 
@@ -165,13 +186,13 @@ The abstract should contain the following information (1/2 sentences per item):
 \tableofcontents
 \endgroup
 
-% Keep the list of figures and the list of tables on the same page.
-\pagestyle{fancy}
-\listoffigures\addcontentsline{toc}{chapter}{List of figures}
-\begingroup
-\let\clearpage\relax
-\listoftables\addcontentsline{toc}{chapter}{List of tables}
-\endgroup
+% % Keep the list of figures and the list of tables on the same page.
+% \pagestyle{fancy}
+% \listoffigures\addcontentsline{toc}{chapter}{List of figures}
+% \begingroup
+% \let\clearpage\relax
+% \listoftables\addcontentsline{toc}{chapter}{List of tables}
+% \endgroup
 
 % Include the abstract page. See this definition if page numbers are wrong.
 \AbstractPage
@@ -185,26 +206,62 @@ The abstract should contain the following information (1/2 sentences per item):
 % Textul licentei incepe de aici
 \chapter{Introduction}\pagestyle{fancy}
 
-Google Scholar and Mendeley are your friends for generating references. You can also export them directly from DBLP and other websites.
-
-Please use $citet$ - e.g., \citet{NIPS2017_3f5ee243} - for contextual references to the authors and $citep$ - e.g., \citep{HochSchm97} - in usual citations. \textbf{Never} include paper titles, only formulations that relate to the authors and are automatically generated (e.g., The study by ..., or X (year) have ...). Examples of BibTex entries are included in the "bibliography.bib" file.
-
-Also, Grammarly is extremely useful for grammatical corrections. Please use the Chrome plugin integrated with Overleaf.
-
 \section{Context}
+
+The global smart city market is projected to reach \$6.4 trillion by 2030, driven
+by IoT deployments for infrastructure monitoring, traffic management, and energy
+efficiency. However, cellular connectivity costs remain prohibitive—mid-sized
+cities like Louisville, Kentucky, spend up to \$2.3M annually on cellular plans
+for IoT sensors. While 5G RedCap offers reduced-capability IoT devices
+(50 Mbps upload, $<$100 ms latency), its deployment faces urban coverage gaps and
+energy inefficiencies, particularly for non-urgent data like waste management or
+air quality metrics \cite{GSMA2024} \cite{Madamori2021}.\\
+Opportunistic D2D networks mitigate these costs by repurposing mobile entities as
+data relays. For instance, Chapel Hill's public buses have been used to relay traffic
+sensor data to edge nodes at transit hubs with a latency reduction of over 20
+minutes due to their predictable routes (85\% predictability) \cite{Madamori2021}. Similarly, Barcelona's
+garbage trucks have reduced cellular costs by 62\% by collecting bin fill-level
+data via IEEE 802.11p protocols with a store-carry-forward delay tolerance of $\leq$ 4 hours \cite{Gandhi_2023}.\\
+Citizen participation also plays a crucial role; Fargo has incentivized smartphone
+users to share bandwidth for environmental monitoring projects using opt-in
+blockchain frameworks like Ethereum's zero-knowledge proofs for GDPR compliance.
+This approach achieved a significant offload of cellular traffic during peak
+hours—up to 40\% \cite{Gandhi_2023}.
+
+\subsection{Technical Challenges}
+Traditional centrality metrics such as betweenness fail in transient networks because
+they do not account for dynamic mobility patterns during rush hours or unexpected
+events like road closures or natural disasters. For example, Ahmedabad's bus network
+experienced a notable increase in data loss when static edge nodes were used during
+monsoon-induced route detours \cite{Gandhi_2023}.\\
+Hybrid network orchestration is another challenge; while 5G RedCap improves grid
+reliability through "hard slicing" techniques suitable for critical services such
+as solar PV systems (e.g., China's high-voltage distribution networks), integrating
+opportunistic links requires sophisticated software-defined networking (SDN)
+solutions that can dynamically route traffic based on real-time congestion levels \cite{GSMA2024} \cite{Liu_2024}.\pagebreak \\
+Scalability versus cost remains a significant trade-off; deploying one edge node
+per forty IoT devices in Gandhinagar achieved nearly full coverage at an annual
+cost of approximately \$18K—a reduction of about 77\% compared to traditional
+cellular-only models according to simulations conducted using the ONE Simulator tool \cite{Gandhi_2023}.
+\subsection{Emerging Solutions}
+Blockchain technology is also being integrated into these systems primarily through
+platforms like Hyperledger Fabric which was tested successfully in Skudai Malaysia
+where it resolved 92\% of GDPR compliance issues related to anonymizing crowdsourced
+air quality data from citizen-participatory networks \cite{Alasbali_2022}.\\
+Lastly disaster resilience strategies combining satellite backhaul with VANETs have
+been implemented effectively; Japan's "Never Die Network" maintained 68\% connectivity
+even during earthquakes using cars as ad-hoc edge nodes demonstrating potential
+applications beyond urban settings into emergency response scenarios globally \cite{Andersson_2014}.
 
 \section{Problem Statement}
 
 \section{Objectives}
 
-\section{Thesis Structure}
-
-
 %---------------------------
 \chapter{State of the art}
 
 
-
+\begin{comment}
 %---------------------------
 \chapter{Method}
 
@@ -231,12 +288,11 @@ Also, Grammarly is extremely useful for grammatical corrections. Please use the 
 
 %---------------------------
 \chapter{Conclusions and Future Work}
-
+\end{comment}
 
 % Bibliography / References.
 \renewcommand\bibname{References}
 \clearpage\phantomsection\addcontentsline{toc}{chapter}{\bibname}
-\bibliographystyle{apacite}
-\bibliography{bibliography}
+\printbibliography
 
 \end{document}
