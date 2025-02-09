@@ -1,11 +1,11 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass[10pt,a4paper]{report}
 
 \usepackage[utf8]{inputenc} % pentru suport diacritice
-\usepackage{lmodern}
+\usepackage{courier}
 % \usepackage[romanian]{babel} % setări pentru limba română
-\renewcommand\familydefault{\sfdefault} % sans serif
 
-\usepackage[margin=2.54cm]{geometry} % dimensiuni pagină și margini
+
+\usepackage[top=3.5cm, bottom=3.5cm, left=3.5cm, right=3cm]{geometry} % dimensiuni pagină și margini
 \usepackage{graphicx} % support the \includegraphics command and options
 
 % formatting sections and subsections
@@ -54,14 +54,14 @@
 \newcommand{\UniTextEN}{National University of Science and Technology\\ POLITEHNICA Bucharest\\
 Faculty of Automatic Control and Computers\\
 Computer Science and Engineering Department\\}
-\newcommand{\DiplomaEN}{MASTER THESIS Q1 REPORT}
+\newcommand{\DiplomaEN}{MASTER THESIS S1 REPORT}
 \newcommand{\AdvisorEN}{Thesis advisor:}
 \newcommand{\BucEN}{BUCHAREST}
 
 \newcommand{\UniTextRO}{Universitatea Națională de Știință și Tehnologie\\ POLITEHNICA din București \\
 Facultatea de Automatică și Calculatoare\\
 Departamentul Calculatoare\\}
-\newcommand{\DiplomaRO}{RAPORT Q1 DISERTAȚIE}
+\newcommand{\DiplomaRO}{RAPORT S1 DISERTAȚIE}
 \newcommand{\AdvisorRO}{Coordonator științific:}
 \newcommand{\BucRO}{BUCUREȘTI}
 
@@ -70,9 +70,8 @@ Departamentul Calculatoare\\}
 \begin{center}
 {\Large #1}  % header (university, faculty, department)
 \vspace{50pt}
-\begin{tabular}{ccc}
+\begin{tabular}{cc}
 \includegraphics[height=3cm]{pics/UNST Poli.png} & 
-\includegraphics[height=3cm]{pics/A&C.png} & 
 \includegraphics[height=3cm]{pics/sigla_cs.png}
 \end{tabular}
 
@@ -109,7 +108,7 @@ Departamentul Calculatoare\\}
 \newcommand{\AbstractPage}{
 \begin{titlepage}
 
-\thispagestyle{fancy}\setcounter{page}{3}
+\thispagestyle{fancy}\setcounter{page}{2}
 \clearpage\phantomsection\addcontentsline{toc}{chapter}{Abstract}
 
 \textbf{\large ABSTRACT}\par
@@ -141,35 +140,35 @@ Departamentul Calculatoare\\}
 %%   Câmpurile aferente rezumatului
 %%
 \newcommand{\AbstractEN}{
-Opportunistic communication in smart cities offers a cost-effective alternative\\
-to traditional cellular networks by leveraging existing infrastructure and\\
-placing edge entities. With the number of connected IoT devices projected to\\
-reach 40 billion by 2030, and 5G networks facing scalability challenges due to\\
-bandwidth limitations and deployment costs, this approach addresses critical\\
+Opportunistic communication in smart cities offers a cost-effective alternative
+to traditional cellular networks by leveraging existing infrastructure and
+placing edge entities. With the number of connected IoT devices projected to
+reach 40 billion by 2030, and 5G networks facing scalability challenges due to
+bandwidth limitations and deployment costs, this approach addresses critical
 gaps in urban digital transformation.
 \vspace{1\baselineskip} \\
-The placement of edge nodes can be influenced by various factors, including the\\
-number of users or data sources that need to be served, the types of applications\\
-being supported, and the available network infrastructure. Effective edge node\\
-placement can lead to significant improvements in the performance and efficiency\\
-of applications and services, making it a critical aspect of modern network\\
+The placement of edge nodes can be influenced by various factors, including the
+number of users or data sources that need to be served, the types of applications
+being supported, and the available network infrastructure. Effective edge node
+placement can lead to significant improvements in the performance and efficiency
+of applications and services, making it a critical aspect of modern network
 design and management.
 }
 
 \newcommand{\AbstractRO}{
-Comunicarea oportunistă în orașele inteligente oferă o alternativă rentabilă la\\
-rețelele celulare tradiționale, prin utilizarea infrastructurii existente și\\
-plasarea entităților edge (la marginea rețelei). Cu un număr de dispozitive IoT\\
-conectate proiectat să ajungă la 40 de miliarde până în 2030, și cu rețelele 5G\\
-care se confruntă cu provocări de scalabilitate din cauza limitărilor de lățime\\
-de bandă și a costurilor de implementare, această abordare abordează lacune\\
+Comunicarea oportunistă în orașele inteligente oferă o alternativă rentabilă la
+rețelele celulare tradiționale, prin utilizarea infrastructurii existente și
+plasarea entităților edge (la marginea rețelei). Cu un număr de dispozitive IoT
+conectate proiectat să ajungă la 40 de miliarde până în 2030, și cu rețelele 5G
+care se confruntă cu provocări de scalabilitate din cauza limitărilor de lățime
+de bandă și a costurilor de implementare, această abordare abordează lacune
 critice în transformarea digitală urbană.
 \vspace{1\baselineskip} \\
-Amplasarea nodurilor edge poate fi influențată de diverși factori,\\
-inclusiv numărul de utilizatori sau surse de date care trebuie deservite,\\
-tipurile de aplicații care sunt suportate și infrastructura de rețea disponibilă.\\
-Amplasarea eficientă a nodurilor de margine poate duce la îmbunătățiri semnificative\\
-în performanța și eficiența aplicațiilor și serviciilor, ceea ce o face un aspect\\
+Amplasarea nodurilor edge poate fi influențată de diverși factori,
+inclusiv numărul de utilizatori sau surse de date care trebuie deservite,
+tipurile de aplicații care sunt suportate și infrastructura de rețea disponibilă.
+Amplasarea eficientă a nodurilor de margine poate duce la îmbunătățiri semnificative
+în performanța și eficiența aplicațiilor și serviciilor, ceea ce o face un aspect
 critic al proiectării și gestionării rețelelor moderne.
 
 \vspace{3\baselineskip}
@@ -179,16 +178,17 @@ critic al proiectării și gestionării rețelelor moderne.
 
 \begin{document}
 \pagenumbering{roman}
-\frontPageRO
 \frontPageEN
+\frontPageRO
 \begingroup
 \linespread{1}
 \tableofcontents
+% \let\clearpage\relax
 \endgroup
 
 % Keep the list of figures and the list of tables on the same page.
-\pagestyle{fancy}
-\listoffigures\addcontentsline{toc}{chapter}{List of figures}
+% \pagestyle{fancy}
+% \listoffigures\addcontentsline{toc}{chapter}{List of figures}
 % \begingroup
 % \let\clearpage\relax
 % \listoftables\addcontentsline{toc}{chapter}{List of tables}
@@ -221,7 +221,7 @@ data relays. For instance, Chapel Hill's public buses have been used to relay tr
 sensor data to edge nodes at transit hubs with a latency reduction of over 20
 minutes due to their predictable routes (85\% predictability) \cite{Madamori2021}. Similarly, Barcelona's
 garbage trucks have reduced cellular costs by 62\% by collecting bin fill-level
-data via IEEE 802.11p protocols with a store-carry-forward delay tolerance of $\leq$ 4 hours \cite{Gandhi_2023}.\\
+data via IEEE 802.11p protocols with a store-carry-forward delay tolerance of $\leq$ 4 hours \cite{Sinaeepourfard_2016}.\\
 Citizen participation also plays a crucial role; Fargo has incentivized smartphone
 users to share bandwidth for environmental monitoring projects using opt-in
 blockchain frameworks like Ethereum's zero-knowledge proofs for GDPR compliance.
@@ -243,6 +243,7 @@ Scalability versus cost remains a significant trade-off; deploying one edge node
 per forty IoT devices in Gandhinagar achieved nearly full coverage at an annual
 cost of approximately \$18K—a reduction of about 77\% compared to traditional
 cellular-only models according to simulations conducted using the ONE Simulator tool \cite{Gandhi_2023}.
+
 \subsection{Emerging Solutions}
 Blockchain technology is also being integrated into these systems primarily through
 platforms like Hyperledger Fabric which was tested successfully in Skudai Malaysia
@@ -256,60 +257,152 @@ scenarios globally \cite{Andersson_2014}.
 
 \section{Problem Statement}
 
-The exponential growth of IoT devices in smart cities poses significant challenges
-for traditional cellular networks, particularly in terms of scalability, cost, and
-energy efficiency. While 5G RedCap and opportunistic communication networks
-(OppNets) offer partial solutions, several unresolved issues impede their
-widespread adoption:
+The integration of vast numbers of IoT devices into smart city environments
+presents a complex challenge, particularly concerning the limitations of
+traditional cellular networks in terms of scalability, cost-effectiveness, and
+energy efficiency. While emerging technologies like 5G RedCap and opportunistic
+communication networks (OppNets) offer promising partial solutions, their
+widespread adoption is hindered by several key unresolved issues.\\
+Firstly, many existing network deployments rely on static edge node placement
+strategies, which are ill-suited for the dynamic conditions of real-world urban
+environments. Techniques such as centrality-based node placement assume fixed
+network topologies. These assumptions break down when facing disruptions like
+traffic detours or adverse weather conditions. For example, a study of Ahmedabad's
+bus network found that the use of static edge nodes led to a significant 22\%
+data loss during monsoon-induced route deviations \cite{Gandhi_2023}.
+This underscores the critical need for dynamic adaptation to maintain reliable
+connectivity.\\
+Secondly, the architecture of hybrid networks, which combine 5G RedCap for
+time-sensitive services with OppNets for less critical data, lacks standardized
+protocols to effectively balance cost and quality of service (QoS). This absence
+of clear guidelines makes it challenging to optimally manage network resources
+and ensure the reliable delivery of data across different service types.\\
+Thirdly, current approaches often prioritize network coverage and latency while
+neglecting environmental impacts. The deployment of energy-intensive edge nodes
+in urban areas could potentially undermine the cost savings achieved by OppNets,
+if this is coupled with a higher carbon footprint. Therefore, there is a critical
+need for research that addresses this trade-off.\\
+Finally, opportunistic networks need robust failover mechanisms to maintain
+operation during disaster scenarios. The limitations of current approaches were
+highlighted during a disaster scenario when Japan's VANET-based "Never Die Network"
+maintained only 68\% connectivity during earthquakes \cite{Andersson_2014}. This
+exposed gaps in resilience planning, indicating the need for better designs.
 
-\begin{enumerate}
-	\item \textbf{Static Edge Node Placement in Dynamic Environments}
-\par Centrality-based edge node placement strategies (e.g., betweenness, in-degree) assume
-fixed network topologies, leading to suboptimal performance during real-world disruptions
-like traffic detours or weather events. For instance, Ahmedabad's bus network experienced
-22\% data loss during monsoon-induced route deviations, highlighting the need for
-dynamic adaptation \cite{Gandhi_2023}.\\
-	\item \textbf{Inefficient Hybrid Network Orchestration}
-\par Hybrid architectures combining 5G RedCap for critical services (e.g., grid reliability)
-and OppNets for non-critical data lack standardized protocols to balance cost and
-quality of service (QoS).\\
-	\item \textbf{Absence of Sustainability Metrics}
-\par Existing frameworks prioritize coverage and latency but neglect environmental impacts.
-Deploying energy-intensive edge nodes in urban areas could offset OppNets' cost savings
-by increasing carbon footprints—a trade-off unaddressed in current research.\\
-\end{enumerate}
+\pagebreak
 
 \section{Objectives}
+This thesis aims to tackle key challenges in the implementation of opportunistic
+communication networks for smart city applications. By focusing on cost-effective
+and resilient solutions for municipal infrastructure, this research seeks to
+provide practical guidance for future smart city deployments. The core objectives
+are as follows.
 
-\begin{enumerate}
-	\item \textbf{Develop Algorithmic Edge Node Placement Strategies}
-\par Design deterministic algorithms (e.g., greedy or graph-based methods) to select
-optimal edge node locations based on real-world transit network datasets, evaluate
-these algorithms against traditional centrality metrics under simulated
-scenarios of varying network dynamics and reduce latency by $\leq$20\% compared
-to static placement methods while maintaining deployment costs as low as possible.\\
-	\item \textbf{Enhance Disaster Resilience in Opportunistic Networks}
-\par Investigate how local storage mechanisms can ensure continuous operation
-during disasters by analyzing buffer sizes required at bus nodes, propose protocols
-for prioritizing critical infrastructure-related data transmission over non-critical
-traffic during emergencies and achieve $\leq$50\% cellular cost reduction without
-violating 100 ms latency for critical services.\\
-	\item \textbf{Optimize Network Configuration for Municipal Infrastructure Support}
-\par Model different configurations of OppNet architectures tailored specifically
-for urban infrastructure monitoring (e.g., waste management), compare performance metrics
-such as coverage area and packet delivery ratio across various configurations using
-simulation tools like ONE Simulator and achieve $\geq$90\% coverage with optimized
-configurations.\\
-	\item \textbf{Integrate Sustainability Metrics into Cost Models}
-\par Quantify the carbon footprint of solar-powered edge nodes deployed at transit hubs
-or edge nodes built on existing infrastructure to reduce infrastructure costs by
-$\leq$25\% while maintaining $\geq$90\% coverage.
-\end{enumerate}
+\subsection{Algorithmic Edge Node Placement for Dynamic Networks}
+
+The primary goal here is to design and evaluate deterministic algorithms that
+can strategically position edge nodes within opportunistic networks, particularly
+those leveraging public transit systems. This will involve developing practical
+methods, such as greedy or graph-based algorithms, capable of adapting to the
+constantly changing conditions typical of urban environments.\\
+To achieve this, the algorithms will be assessed using real-world transit datasets.
+This real-world data will provide a foundation for simulating various network
+conditions and comparing the performance of the newly developed algorithms against
+traditional, static centrality metrics. The ultimate aim is to create solutions
+that not only minimize latency but also keep deployment costs manageable.\\
+\subsection{Enhancing Resilience in the Face of Disasters}
+
+A significant aspect of this thesis involves exploring how to make opportunistic
+networks robust enough to withstand infrastructure disruptions. To do this, I
+intend to thoroughly analyze how local storage capabilities on bus nodes can
+ensure data remains accessible, even during disaster scenarios. The plan is to
+develop protocols that prioritize the transmission of essential data related to
+critical infrastructure services over less urgent traffic during emergencies. By
+focusing on these targeted strategies, I intend to provide a pathway toward
+reducing cellular dependency by up to 50\% without compromising the responsiveness
+of essential city services.\\
+
+\subsection{Optimized Network Configurations for Municipal Infrastructure:}
+The thesis will also focus on optimizing opportunistic network architectures
+for specific urban infrastructure monitoring applications. This involves modelling
+different network setups tailored to needs such as waste management. To evaluate
+the effectiveness of these setups, performance metrics like coverage area and
+packet delivery ratio will be compared using simulation tools such as ONE Simulator.
+The aim is to achieve at least 90\% coverage with configurations that are
+specifically designed to support efficient and cost-effective monitoring of
+municipal services.\\
+\subsection{Integrating Sustainability into Cost-Effective Models:}
+Finally, this thesis will investigate how sustainability metrics can be integrated
+into the economic analysis of opportunistic networks. This includes quantifying
+the carbon footprint associated with deploying solar-powered edge nodes and nodes
+built on existing infrastructure. The aim here is to reduce infrastructure costs
+by 25\% compared to traditional cellular deployments while maintaining at least
+90\% network coverage and prioritizing environmentally responsible design choices.
 
 
 %---------------------------
 \chapter{State of the art}
 
+Opportunistic networks (OppNets) have emerged as a cost-effective alternative to
+traditional cellular networks for IoT deployments in smart cities. By leveraging
+existing infrastructure like public transit vehicles and citizen devices as data
+relays, OppNets reduce reliance on expensive cellular connectivity. This section
+highlights recent advancements in edge node placement strategies and hybrid network
+architectures.
+
+\section{Edge Node Placement Strategies}
+Effective edge node placement is pivotal for achieving optimal performance within
+Opportunistic Networks (OppNets). In particular, placement significantly influences
+both the minimization of latency and the maximization of network coverage.
+Conventional centrality metrics, such as betweenness centrality, often fall
+short in these dynamic contexts because they do not adequately account for the
+constantly changing patterns of mobility exhibited by network participants. This
+limitation has motivated researchers to investigate algorithmic solutions that
+can more dynamically adapt to these changes and maintain network efficiency.\\
+One notable approach has been the formulation of edge node selection as an
+Influence Maximization problem, resulting in the Minimal Delivery Delay (MDD)
+algorithm. This algorithm is explicitly designed to select optimal edge nodes
+based on datasets derived from real-world transit systems, such as those found
+in cities like Chapel Hill and Louisville \cite{LatencyDefined2021}. Notably,
+this approach has been shown to outperform traditional centrality metrics,
+achieving a significant reduction in end-to-end latency.\\
+Another strategy that has gained attention is the Improved Snake Optimization
+(ISO) algorithm. The ISO algorithm functions by dynamically adjusting server
+locations in response to predicted traffic flows. This dynamic adaptation
+enables the algorithm to reduce infrastructure deployment costs by approximately
+30\% when compared to static, non-adaptive deployment strategies \cite{Liu_2024}.
+
+\section{Hybrid Network Architectures}
+The hybridization of 5G Reduced Capability (RedCap) technology with Opportunistic
+Networks (OppNets) represents a balanced and promising approach for smart city
+deployments, integrating the strengths of both technologies. This hybrid model
+seeks to leverage the cost efficiencies provided by OppNets while capitalizing
+on the guaranteed Quality of Service (QoS) offered by 5G RedCap.\\
+5G RedCap case studies have underscored its suitability for critical services,
+such as smart grids, and provide evidence of its integration with opportunistic
+links for more delay-tolerant IoT applications. For instance, China's
+high-voltage distribution networks are deploying hard slicing techniques through
+5G RedCap that provide robust grid reliability \cite{GSMA2024}.\\
+In a different context, the city of Barcelona's innovative waste management system
+leveraged opportunistic communication by equipping its fleet of garbage trucks
+with IEEE 802.11p protocols. This enabled the trucks to collect data from smart
+bins using store-carry-forward mechanisms, leading to a substantial cellular
+cost reduction of sixty-two percent \cite{Sinaeepourfard_2016}.
+
+\section{Disaster Resilience Implementations}
+The capacity to maintain continuous operation during disaster scenarios stands as
+a critical requirement for any robust smart city infrastructure. The effects of
+disasters can severely compromise communication networks, underscoring the need
+for innovative solutions that ensure connectivity is preserved. A noteworthy
+example of such a solution is Japan's "Never Die Network," designed with disaster
+resilience as a central tenet. This network strategically combines satellite
+backhaul with vehicular ad-hoc networks (VANETs), leveraging vehicles as
+impromptu edge nodes to maintain functionality during emergencies such as
+earthquakes. Andersson and Kafle's (2014) research highlights the success of
+this architecture, reporting that it could maintain approximately 68\%
+connectivity even under severe disruption \cite{Andersson_2014}. The ability to
+maintain a degree of connectivity under the most challenging circumstances
+highlights the significance of the Never Die Network in the implementation
+and design of emergency communication networks.
 
 \begin{comment}
 %---------------------------
@@ -346,3 +439,13 @@ $\leq$25\% while maintaining $\geq$90\% coverage.
 \printbibliography
 
 \end{document}
+
+\begin{comment}
+For figures:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25\textwidth]{mesh}
+    \caption{a nice plot}
+    \label{fig:mesh1}
+\end{figure}
+\end{comment}
