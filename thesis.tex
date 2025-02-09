@@ -54,14 +54,14 @@
 \newcommand{\UniTextEN}{National University of Science and Technology\\ POLITEHNICA Bucharest\\
 Faculty of Automatic Control and Computers\\
 Computer Science and Engineering Department\\}
-\newcommand{\DiplomaEN}{MASTER THESIS RESEARCH REPORT}
+\newcommand{\DiplomaEN}{MASTER THESIS Q1 REPORT}
 \newcommand{\AdvisorEN}{Thesis advisor:}
 \newcommand{\BucEN}{BUCHAREST}
 
 \newcommand{\UniTextRO}{Universitatea Națională de Știință și Tehnologie\\ POLITEHNICA din București \\
 Facultatea de Automatică și Calculatoare\\
 Departamentul Calculatoare\\}
-\newcommand{\DiplomaRO}{RAPORT CERCETARE DISERTAȚIE}
+\newcommand{\DiplomaRO}{RAPORT Q1 DISERTAȚIE}
 \newcommand{\AdvisorRO}{Coordonator științific:}
 \newcommand{\BucRO}{BUCUREȘTI}
 
@@ -109,7 +109,7 @@ Departamentul Calculatoare\\}
 \newcommand{\AbstractPage}{
 \begin{titlepage}
 
-\thispagestyle{fancy}\setcounter{page}{5}
+\thispagestyle{fancy}\setcounter{page}{3}
 \clearpage\phantomsection\addcontentsline{toc}{chapter}{Abstract}
 
 \textbf{\large ABSTRACT}\par
@@ -129,7 +129,7 @@ Departamentul Calculatoare\\}
 \newcommand{\ProjectTitleRO}{Comunicație oportunistă în orașe inteligente}
 \newcommand{\ProjectTitleEN}{Opportunistic Communication in Smart Cities}
 \newcommand{\Name}{Alexandru Micu}
-\newcommand{\AdvisorA}{Conf. dr. ing. Radu Ioan Ciobanu}
+\newcommand{\AdvisorA}{Conf. dr. ing. Radu-Ioan Ciobanu}
 \newcommand{\Year}{2025}
 
 % Setări document
@@ -186,9 +186,9 @@ critic al proiectării și gestionării rețelelor moderne.
 \tableofcontents
 \endgroup
 
-% % Keep the list of figures and the list of tables on the same page.
-% \pagestyle{fancy}
-% \listoffigures\addcontentsline{toc}{chapter}{List of figures}
+% Keep the list of figures and the list of tables on the same page.
+\pagestyle{fancy}
+\listoffigures\addcontentsline{toc}{chapter}{List of figures}
 % \begingroup
 % \let\clearpage\relax
 % \listoftables\addcontentsline{toc}{chapter}{List of tables}
@@ -248,14 +248,64 @@ Blockchain technology is also being integrated into these systems primarily thro
 platforms like Hyperledger Fabric which was tested successfully in Skudai Malaysia
 where it resolved 92\% of GDPR compliance issues related to anonymizing crowdsourced
 air quality data from citizen-participatory networks \cite{Alasbali_2022}.\\
-Lastly disaster resilience strategies combining satellite backhaul with VANETs have
-been implemented effectively; Japan's "Never Die Network" maintained 68\% connectivity
-even during earthquakes using cars as ad-hoc edge nodes demonstrating potential
-applications beyond urban settings into emergency response scenarios globally \cite{Andersson_2014}.
+Lastly disaster resilience strategies combining satellite backhaul with VANETs
+(Vehicular Ad-Hoc Networks) have been implemented effectively; Japan's "Never Die Network"
+maintained 68\% connectivity even during earthquakes using cars as ad-hoc edge nodes
+demonstrating potential applications beyond urban settings into emergency response
+scenarios globally \cite{Andersson_2014}.
 
 \section{Problem Statement}
 
+The exponential growth of IoT devices in smart cities poses significant challenges
+for traditional cellular networks, particularly in terms of scalability, cost, and
+energy efficiency. While 5G RedCap and opportunistic communication networks
+(OppNets) offer partial solutions, several unresolved issues impede their
+widespread adoption:
+
+\begin{enumerate}
+	\item \textbf{Static Edge Node Placement in Dynamic Environments}
+\par Centrality-based edge node placement strategies (e.g., betweenness, in-degree) assume
+fixed network topologies, leading to suboptimal performance during real-world disruptions
+like traffic detours or weather events. For instance, Ahmedabad's bus network experienced
+22\% data loss during monsoon-induced route deviations, highlighting the need for
+dynamic adaptation \cite{Gandhi_2023}.\\
+	\item \textbf{Inefficient Hybrid Network Orchestration}
+\par Hybrid architectures combining 5G RedCap for critical services (e.g., grid reliability)
+and OppNets for non-critical data lack standardized protocols to balance cost and
+quality of service (QoS).\\
+	\item \textbf{Absence of Sustainability Metrics}
+\par Existing frameworks prioritize coverage and latency but neglect environmental impacts.
+Deploying energy-intensive edge nodes in urban areas could offset OppNets' cost savings
+by increasing carbon footprints—a trade-off unaddressed in current research.\\
+\end{enumerate}
+
 \section{Objectives}
+
+\begin{enumerate}
+	\item \textbf{Develop Algorithmic Edge Node Placement Strategies}
+\par Design deterministic algorithms (e.g., greedy or graph-based methods) to select
+optimal edge node locations based on real-world transit network datasets, evaluate
+these algorithms against traditional centrality metrics under simulated
+scenarios of varying network dynamics and reduce latency by $\leq$20\% compared
+to static placement methods while maintaining deployment costs as low as possible.\\
+	\item \textbf{Enhance Disaster Resilience in Opportunistic Networks}
+\par Investigate how local storage mechanisms can ensure continuous operation
+during disasters by analyzing buffer sizes required at bus nodes, propose protocols
+for prioritizing critical infrastructure-related data transmission over non-critical
+traffic during emergencies and achieve $\leq$50\% cellular cost reduction without
+violating 100 ms latency for critical services.\\
+	\item \textbf{Optimize Network Configuration for Municipal Infrastructure Support}
+\par Model different configurations of OppNet architectures tailored specifically
+for urban infrastructure monitoring (e.g., waste management), compare performance metrics
+such as coverage area and packet delivery ratio across various configurations using
+simulation tools like ONE Simulator and achieve $\geq$90\% coverage with optimized
+configurations.\\
+	\item \textbf{Integrate Sustainability Metrics into Cost Models}
+\par Quantify the carbon footprint of solar-powered edge nodes deployed at transit hubs
+or edge nodes built on existing infrastructure to reduce infrastructure costs by
+$\leq$25\% while maintaining $\geq$90\% coverage.
+\end{enumerate}
+
 
 %---------------------------
 \chapter{State of the art}
